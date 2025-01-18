@@ -1,19 +1,10 @@
-import { View, Text } from 'react-native';
+import { Redirect } from 'expo-router';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-const index = () => {
-    return (
-        <SafeAreaView>
-            <View>
-                <Text className='text-2xl text-red-600 m-4 border border-red-200 bg-slate-500'>Nativewind</Text>
-                <Text className='text-3xl'>Hello wind</Text>
-            </View>
+const Index = () => {
+  const isLoggedIn = false; // Replace with your actual authentication check
 
-            <View />
-
-        </SafeAreaView>
-    );
+  return isLoggedIn ? <Redirect href="/home" /> : <Redirect href="/login" />;
 };
 
-export default index;
+export default Index;
