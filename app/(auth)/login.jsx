@@ -7,15 +7,15 @@ const Login = () => {
     <View className="flex-1 p-4"> 
       {/* Display the ProductScreen component */}
 
-      <ScrollView>
+    
       <ProductScreen /> 
-      </ScrollView>
+     
       {/* Display an image with proper styling */}
       <Image 
         source={{ uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/nike/nike3.png" }} 
         className="w-96 h-96" // Tailwind styling
       />
-     
+   
     </View>
   );
 };
