@@ -1,45 +1,47 @@
 import React from "react";
-import { View, Image, FlatList, useWindowDimensions, Text, ScrollView } from "react-native";
+import { View, Image, Text, Pressable, ScrollView } from "react-native";
 import product from "../constants/productList";
 
 const ProductDetailsScreen = () => {
   const productDetails = product[0];
-  const { width } = useWindowDimensions(); // Get the screen dimensions
 
+  const addTocart=()=>{
+    console.warn("add to cart working")
+  }
   return (
-    <View className=" bg-white">
+    <ScrollView className="flex-1 bg-white">
       {/* Product Image Carousel */}
-      <FlatList
-        data={productDetails.images}
+      <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
-        className=" p-16 border border-red-400"
-        renderItem={({ item }) => (
+        className="p-4"
+      >
+        {productDetails.images.map((item, index) => (
           <Image
+            key={index}
             source={{ uri: item }}
-          
-            className="rounded-lg w-screen h-96"
+            className="h-72 w-screen rounded-lg "
+           
           />
-        )}
-        keyExtractor={(item, index) => index.toString()}
-      />
+        ))}
+      </ScrollView>
 
       {/* Product Details */}
-      <ScrollView>
       <View className="p-4">
-     
-        <Text className="font-bold text-3xl mb-2">{productDetails.name}</Text>
-        <Text className="font-bold text-2xl text-gray-700 mb-4">$ {productDetails.price}</Text>
-      
-        <Text className="text-base text-gray-600">{productDetails.description}</Text>
-        <Text className="text-base text-gray-600">{productDetails.description}</Text>
-        <Text className="text-base text-gray-600">{productDetails.description}</Text>
-        <Text className="text-base text-gray-600">{productDetails.description}</Text>
-        
+        <Text className="text-2xl font-bold mb-2">{productDetails.name}</Text>
+        <Text className="text-xl font-semibold text-gray-600 mb-4">
+          ${productDetails.price}
+        </Text>
+        <Text className="text-base text-gray-600 mb-4">{productDetails.description}</Text>
+       
+
+        {/* Add to Cart Button */}
+        <Pressable className="bg-black py-3 rounded-full shadow-lg mt-4" onPress={addTocart}>
+          <Text className="text-white text-lg text-center font-bold">Add to Cart</Text>
+        </Pressable>
       </View>
-      </ScrollView>
-    </View>
+    </ScrollView>
   );
 };
 
