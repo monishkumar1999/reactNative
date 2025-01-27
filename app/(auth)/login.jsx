@@ -4,7 +4,7 @@ import ProductScreen from '../../component/ProductScreen'; // Import the Product
 import ProductDetailsScreen from '../../component/productDeatilsScreen';
 const Login = () => {
   return (
-    <View className=""> 
+    <View className="flex-1"> 
       {/* Display the ProductScreen component */}
 
     
